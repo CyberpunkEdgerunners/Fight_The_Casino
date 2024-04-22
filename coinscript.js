@@ -20,8 +20,6 @@ function playCoinToss() {
     } else {
         let switchGame = confirm("Do you want to switch to another game?");
         if (switchGame) {
-            // Redirect to another game or perform the necessary action to switch games
-            // For now, let's just alert the user
             alert("Redirecting to another game...");
         } else {
             alert("Thank you for playing! Enjoy your day!");
