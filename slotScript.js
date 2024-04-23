@@ -2,7 +2,7 @@ function slotMachines() {
     let m = document.getElementById("money");
     let money = parseInt(m.innerText.replace(/[\$,]/g, ""), 10); // Used to convert money to an int for calculations
 
-    const min = 100;
+    const min = 10;
 
     if (money < min) {
         alert("Sorry! You do not have enough money!");
