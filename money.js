@@ -25,7 +25,7 @@ class Money {
         this.balance -= x;
     }
 
-    get_balance() { // Returns current balance
+    getBalance() { // Returns current balance
         return this.balance;
     }
 
@@ -36,6 +36,12 @@ class Money {
         }
         this.balance = x;
     }
+}
+
+function updateDisplay() {
+    var balanceElement = document.getElementById("money");
+    var curr_balance = money.getBalance();
+    balanceElement.textContent = '$${curr_balance.toLocaleString()}';
 }
 
 const money = new Money(); // Global bank object to influence

@@ -4,7 +4,7 @@ function slotMachines() {
 
     while (playAgain) {
 
-        if (money.get_balance() < min) {
+        if (money.getBalance() < min) {
             alert("Sorry! You do not have enough money!");
             return;
         }
@@ -19,6 +19,8 @@ function slotMachines() {
         }
 
         money.subMoney(bet);
+        updateDisplay();
+
         let slot1 = Math.floor(Math.random() * 3) + 1; // Random number between 1 and 3
         let slot2 = Math.floor(Math.random() * 3) + 1; 
         let slot3 = Math.floor(Math.random() * 3) + 1; 
@@ -30,6 +32,7 @@ function slotMachines() {
             alert("Sorry, you lost.");
         }
 
+        updateDisplay();
         playAgain = confirm("Play again?");
     }
 }
