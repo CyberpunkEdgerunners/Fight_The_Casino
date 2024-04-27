@@ -40,8 +40,7 @@ class Money {
 
 function updateDisplay() {
     var balanceElement = document.getElementById("money");
-    var curr_balance = money.getBalance();
-    balanceElement.textContent = '$${curr_balance.toLocaleString()}';
+    balanceElement.textContent = `$${money.getBalance().toLocaleString()}`;
 }
 
 const money = new Money(); // Global bank object to influence

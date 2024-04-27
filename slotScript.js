@@ -9,12 +9,16 @@ function slotMachines() {
             return;
         }
 
-        let bet = 0;
+        let bet = -1;
         while (bet < 10 || bet > 100 || isNaN(bet)) {
             bet = parseInt(prompt("Enter your bet amount ($10 to $100):"), 10);
 
             if (isNaN(bet) || bet < 10 || bet > 100) {
                 alert("Invalid bet amount. Please enter a value between $10 and $100.");
+            }
+
+            if (bet === 0) {
+                return;
             }
         }
 
@@ -37,4 +41,3 @@ function slotMachines() {
     }
 }
 document.getElementById("slot").addEventListener("click", slotMachines);
-
