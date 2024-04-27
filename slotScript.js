@@ -25,7 +25,7 @@ function slotMachines() {
         money.subMoney(bet);
         updateDisplay();
 
-        let slot1 = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 3
+        let slot1 = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
         let slot2 = Math.floor(Math.random() * 5) + 1; 
         let slot3 = Math.floor(Math.random() * 5) + 1; 
 
