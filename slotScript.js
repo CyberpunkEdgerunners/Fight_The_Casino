@@ -1,5 +1,5 @@
 function slotMachines() {
-    const min = 100;
+    const min = 10;
     let playAgain = true;
 
     while (playAgain) {
@@ -25,13 +25,18 @@ function slotMachines() {
         money.subMoney(bet);
         updateDisplay();
 
-        let slot1 = Math.floor(Math.random() * 3) + 1; // Random number between 1 and 3
-        let slot2 = Math.floor(Math.random() * 3) + 1; 
-        let slot3 = Math.floor(Math.random() * 3) + 1; 
+        let slot1 = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 3
+        let slot2 = Math.floor(Math.random() * 5) + 1; 
+        let slot3 = Math.floor(Math.random() * 5) + 1; 
 
         if (slot1 === slot2 && slot2 === slot3) {
             money.addMoney(bet * 4);
-            alert("Congratulations! You won");
+            alert("Congratulations! You won the Jackpot!");
+
+        } else if ((slot1 === slot2) || (slot1 === slot3) || (slot2 === slot3)) {
+            money.addMoney(bet * 2);
+            alert("Congratulations! You got a matching pair!");
+            
         } else {
             alert("Sorry, you lost.");
         }
