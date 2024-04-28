@@ -1,41 +1,48 @@
 function slotMachines() {
-    let m = document.getElementById("money");
-    let money = parseInt(m.innerText.replace(/[\$,]/g, ""), 10); // Used to convert money to an int for calculations
-
     const min = 10;
+    let playAgain = true;
 
-    if (money < min) {
-        alert("Sorry! You do not have enough money!");
-        return;
-    }
+    while (playAgain) {
 
-    while (bet < 10 || bet > 1000 || isNaN(bet)) {
-        bet = parseInt(prompt("Enter your bet amount ($10 to $1000):"), 10);
-
-        if (isNaN(bet) || bet < 10 || bet > 1000) {
-            alert("Invalid bet amount. Please enter a value between $10 and $1000.");
+        if (money.getBalance() < min) {
+            alert("Sorry! You do not have enough money!");
+            return;
         }
-    }
 
-    money -= bet;
-    let slot1 = Math.floor(Math.random() * 3) + 1; // Random number beyween 1 and 3
-    let slot2 = Math.floor(Math.random() * 3) + 1; 
-    let slot3 = Math.floor(Math.random() * 3) + 1; 
+        let bet = -1;
+        while (bet < 10 || bet > 100 || isNaN(bet)) {
+            bet = parseInt(prompt("Enter your bet amount ($10 to $100):"), 10);
 
-    if (slot1 === slot2 && slot2 === slot3) {
-        money += bet * 4;
-        alert("Congratulations! You won");
-    } else {
-        alert("Sorry, you lost.");
-    }
+            if ((isNaN(bet) || bet < 10 || bet > 100) && bet != 0) {
+                alert("Invalid bet amount. Please enter a value between $10 and $100.");
+            }
 
-    money.innerText = "$" + currentMoney.toLocaleString();  // Update the displayed money (how to add comma?)
+            if (bet === 0) {
+                return;
+            }
+        }
 
-    let playAgain = confirm("Play again?");
-    if (playAgain) {
-        slotMachines();
-    } else {
-        return
+        money.subMoney(bet);
+        updateDisplay();
+
+        let slot1 = Math.floor(Math.random() * 5) + 1; // Random number between 1 and 5
+        let slot2 = Math.floor(Math.random() * 5) + 1; 
+        let slot3 = Math.floor(Math.random() * 5) + 1; 
+
+        if (slot1 === slot2 && slot2 === slot3) {
+            money.addMoney(bet * 4);
+            alert("Congratulations! You won the Jackpot!");
+
+        } else if ((slot1 === slot2) || (slot1 === slot3) || (slot2 === slot3)) {
+            money.addMoney(bet * 2);
+            alert("Congratulations! You got a matching pair!");
+            
+        } else {
+            alert("Sorry, you lost.");
+        }
+
+        updateDisplay();
+        playAgain = confirm("Play again?");
     }
 }
-
+document.getElementById("slot").addEventListener("click", slotMachines);
