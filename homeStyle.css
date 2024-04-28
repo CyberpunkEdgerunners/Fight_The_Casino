@@ -133,11 +133,27 @@ h2 {
 
 }
 
+#dialog {
+    color: black;
+    background-color: white;
+}
 
+#pee {
+    margin: 0;
+}
 
+.ui-dialog-titlebar {
+    background: red;
+}
 
+.ui-button {
+    margin-left: auto;
+    margin-right: auto;
+}
 
-
+.ui-dialog-content {
+background-image: url('https://www.pikpng.com/pngl/b/50-502013_clash-royale-king-png-clash-royale-hack-png.png');
+}
 
 
 
