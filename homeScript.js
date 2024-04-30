@@ -6,10 +6,15 @@ let storyPic = document.getElementById("imgD");
 let name = prompt("Please enter your name");
 document.getElementById("nickName").innerHTML += name;
 
+
+// id = dialog makes a pop up dialog
+// the #id has to be a div element 
+// use $("#id").dialog('close'); to close the box
 $( function() {
     $( "#dialog" ).dialog();
 } );
 
+// id = dialog makes the height and width of the pop up
 $( "#dialog" ).dialog({
   width: 500,
   height: 500,
