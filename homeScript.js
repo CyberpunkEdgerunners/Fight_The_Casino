@@ -1,5 +1,7 @@
 let story = document.getElementById("dialog");
 let pee = document.getElementById("pee");
+let storyPic = document.getElementById("imgD");
+
 
 let name = prompt("Please enter your name");
 document.getElementById("nickName").innerHTML += name;
@@ -10,7 +12,7 @@ $( function() {
 
 $( "#dialog" ).dialog({
   width: 500,
-  height: 400,
+  height: 500,
 });
 
 
@@ -21,24 +23,29 @@ let   kingTalkOne = "Welcome ";
       kingTalkOne += name;
       kingTalkOne += ", I've heard great tales of your adventure but I don't think you're ready to Fight The Casino";
 const playerTalkOne = "I've spent decades honing my strength to one day take you down and rightfully take what's mine, brother";
-const kingTalkTwo = "If you can earn enough money from the then I'll enligthen you but currently I dont have time to spend on trash";
-const playerTalkTwo = "I'll destory everything here until its only just you and me";
+const kingTalkTwo = "If you can earn enough money from the casino then I'll enligthen you but currently I dont have time to spend on trash";
+const playerTalkTwo = "I'll destory everything here until its only just me and you";
 const kingTalkThree = "You fool, dont you know that the casino always wins";
 
 
 function messages(lineCounter) {
     if(lineCounter == 1) { 
-        story.style.backgroundImage = 'https://www.pikpng.com/pngl/b/50-502013_clash-royale-king-png-clash-royale-hack-png.png';
+        storyPic.src = "https://i.imgur.com/hNCqe6H.png";
         return settingMess;
      }else if(lineCounter == 2) {
+        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
         return kingTalkOne;
      }else if(lineCounter == 3) {
+        storyPic.src = "https://i.imgur.com/npnRwbJ.png";
         return playerTalkOne;
      }else if(lineCounter == 4) {
+        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
         return kingTalkTwo;
      }else if(lineCounter == 5) {
+        storyPic.src = "https://i.imgur.com/npnRwbJ.png";
         return playerTalkTwo;
      }else if(lineCounter == 6) {
+        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
         return kingTalkThree;
      }else 
         return -1;
