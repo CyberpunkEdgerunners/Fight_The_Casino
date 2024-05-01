@@ -39,23 +39,24 @@ function playCoinToss() {
     // ask the user to pick "heads" or "tails"
     do {
         let ans = prompt("Select 'heads' or tails'");
-    } while(ans != "heads" || ans != "tails");
+    } 
+        while(ans != "heads" || ans != "tails");
     // ans will now contain "heads" or "tails"
-
-
     // Perform the coin toss
     //let result = Math.random() < 0.5 ? "Heads" : "Tails";
     let result = Math.random() < 0.5 ? 1 : 2;
-    if(result == 1 && ans == "heads") {
+    if(result == 1 && ans == "heads") 
+    {
             money.addMoney(bet * 4);
-        alert("The result is heads!");
+        alert("The result is " +result + "!");
         // show the random value and update the money
-    } else if (result == 2 && ans == "tails") {
+    } 
+    else if (result == 2 && ans == "tails")
+    {
             money.addMoney(bet * 4);
-        alert("The result is tails!");
+        alert("The result is " + result + "!");
         // show the random value and update the money
     }
-
     // Prompt the user with the result and ask if they want to play again or switch games
     let playAgain = confirm("The result is: " + result + "\nDo you want to play again?");
     if (playAgain) {
