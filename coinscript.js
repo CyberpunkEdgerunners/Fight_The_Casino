@@ -51,7 +51,7 @@ function playCoinToss() {
             money.addMoney(bet * 4);
         // show the random value and update the money
     } else if (result == 2 && ans == "tails") {
-        alert("The result is tails!);
+        alert("The result is tails!");
               money.addMoney(bet * 4);
         // show the random value and update the money
     }
