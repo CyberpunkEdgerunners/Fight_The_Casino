@@ -48,11 +48,11 @@ function playCoinToss() {
     let result = Math.random() < 0.5 ? 1 : 2;
     if(result == 1 && ans == "heads") {
         alert("The result is heads!");
-        
+            money.addMoney(bet * 4);
         // show the random value and update the money
     } else if (result == 2 && ans == "tails") {
         alert("The result is tails!);
-              
+              money.addMoney(bet * 4);
         // show the random value and update the money
     }
 
