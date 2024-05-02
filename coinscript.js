@@ -39,6 +39,7 @@ function playCoinToss() {
     } else {
         alert("You lost! The result is " + result + "! Better luck next time!");
     }
+    updateDisplay();
 }
 
 // Add event listener to the coin option container
