@@ -12,13 +12,10 @@ function playCoinToss() {
     let bet = -1;
     while (bet < 10 || bet > 100 || isNaN(bet)) {
         bet = parseInt(prompt("Enter your bet amount ($10 to $100):"), 10);
-        if (bet === null) {
-            return; // User cancelled, exit the function
-        }
         if ((isNaN(bet) || bet < 10 || bet > 100) && bet !== 0) {
             alert("Invalid bet amount. Please enter a value between $10 and $100.");
         }
-        if (bet === null) {
+        if (bet === 0) {
             return;
         }
     }
@@ -28,18 +25,22 @@ function playCoinToss() {
     updateDisplay();
 
     // Prompt the user to pick "heads" or "tails"
-    do {
+    do
+    {
         ans = prompt("Select 'heads' or 'tails'");
-    } while (ans !== "heads" && ans !== "tails" && ans !== null);
+    }
+        while (ans !== "heads" && ans !== "tails" && ans !== null););
 
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
 
     // Compare the result with the user's choice and update balance accordingly
-    if (result === ans) {
+    if (result === ans)
+    {
         money.addMoney(bet * 2);
         alert("You won! The result is " + result + "! You doubled your bet!");
-    } else {
+    } else 
+    {
         alert("You lost! The result is " + result + "! Better luck next time!");
     }
     updateDisplay();
