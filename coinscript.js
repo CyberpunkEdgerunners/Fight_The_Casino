@@ -33,6 +33,7 @@ function playCoinToss() {
                 return;
             }
         }
+    }
         money.subMoney(bet);
         updateDisplay();
     
