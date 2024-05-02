@@ -33,10 +33,12 @@ function playCoinToss() {
     const result = Math.random() < 0.5 ? "heads" : "tails";
 
     // Compare the result with the user's choice and update balance accordingly
-    if (result === ans) {
+    if (result === ans)
+    {
         money.addMoney(bet * 2);
         alert("You won! The result is " + result + "! You doubled your bet!");
-    } else {
+    } else 
+    {
         alert("You lost! The result is " + result + "! Better luck next time!");
     }
     updateDisplay();
