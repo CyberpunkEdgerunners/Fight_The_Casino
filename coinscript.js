@@ -39,17 +39,19 @@ function playCoinToss() {
     // Check if the user wins and update balance accordingly
     if (result === ans) {
         money.addMoney(bet * 2);
-        alert("You won! The result is " + result + "!");
+        alert("You won! The result is " + result + "! You doubled your bet!");
     } else {
-        alert("You lost! The result is " + result + "!");
+        alert("You lost! The result is " + result + "! Better luck next time!");
     }
 
     // Ask if user wants to play again
-    //playAgain = confirm("Do you want to play again?");
-    updateDisplay();
-    playAgain = confirm("Play again?");
+    playAgain = confirm("Do you want to play again?");
+    if (playAgain) {
+        playCoinToss();
+    } else {
+        alert("Thank you for playing!");
+    }
 }
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
-
