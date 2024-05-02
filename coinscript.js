@@ -1,6 +1,6 @@
 // Function to play the coin toss game
 function playCoinToss() {
-    let ans;
+    
     // Deduct $10 from the user's money
     //let moneyElement = document.getElementById("money");
     //let currentMoney = parseInt(moneyElement.innerText.slice(1));
@@ -39,7 +39,7 @@ function playCoinToss() {
     
     // ask the user to pick "heads" or "tails"
     do {
-        ans = prompt("Select 'heads' or tails'");
+        let ans = prompt("Select 'heads' or tails'");
     } 
         while(ans != "heads" && ans != "tails");
     // ans will now contain "heads" or "tails"
