@@ -25,9 +25,11 @@ function playCoinToss() {
     updateDisplay();
 
     // Prompt the user to pick "heads" or "tails"
-    do {
+    do
+    {
         ans = prompt("Select 'heads' or 'tails'");
-    } while (ans !== "heads" && ans !== "tails");
+    }
+        while (ans !== "heads" && ans !== "tails" && ans !== null););
 
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
