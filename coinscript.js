@@ -1,4 +1,5 @@
 function playCoinToss() {
+    let ans;
     const min = 10;
     
     // Check if user has enough money to play
@@ -24,7 +25,6 @@ function playCoinToss() {
     updateDisplay();
 
     // Prompt the user to pick "heads" or "tails"
-    let ans;
     do
     {
         ans = prompt("Select 'heads' or 'tails'");
@@ -38,7 +38,7 @@ function playCoinToss() {
      console.log();
 
     // Compare the result with the user's choice and update balance
-    if (result === ans)
+    if (result == ans)
     {
          console.log();
         money.addMoney(bet * 2);
