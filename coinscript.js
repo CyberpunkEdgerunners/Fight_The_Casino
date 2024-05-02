@@ -26,6 +26,7 @@ function playCoinToss() {
 
     // Subtract bet amount from user's balance
     money.subMoney(bet);
+    updateDisplay();
 
     // Prompt the user to pick "heads" or "tails"
     do {
