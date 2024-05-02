@@ -46,6 +46,8 @@ function playCoinToss() {
 
     // Ask if user wants to play again
     //playAgain = confirm("Do you want to play again?");
+    updateDisplay();
+    playAgain = confirm("Play again?");
 }
 
 // Add event listener to the coin option container
