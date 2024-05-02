@@ -1,7 +1,7 @@
 let playAgain = true;
-let ans;
 
 function playCoinToss() {
+    let ans;
     const min = 10;
 
     // Check if user has enough money to play
