@@ -38,7 +38,7 @@ function playCoinToss() {
      console.log();
 
     // Compare the result with the user's choice and update balance
-    if (result == ans)
+    if (result === ans)
     {
          console.log();
         money.addMoney(bet * 2);
