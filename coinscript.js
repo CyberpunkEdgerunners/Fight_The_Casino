@@ -34,7 +34,7 @@ function playCoinToss() {
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
 
-    // Compare the result with the user's choice and update balance accordingly
+    // Compare the result with the user's choice and update balance
     if (result === ans)
     {
         money.addMoney(bet * 2);
