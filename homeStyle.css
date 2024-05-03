@@ -161,10 +161,21 @@ img {
     height: 350px;
 }
 
+img {
+    margin: 0;
+    width: 500px;
+    height: 350px;
+}
+
 #buttons {
     display: flex;
     justify-content: space-evenly;
     height: 50px;
     align-items: center;
 }
+
+
+
+
+
 
