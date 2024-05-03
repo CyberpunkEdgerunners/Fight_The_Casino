@@ -2,7 +2,7 @@ function slotMachines() {
     const min = 10;
     let playAgain = true;
 
-    while (playAgain) {
+    
 
         if (money.getBalance() < min) {
             alert("Sorry! You do not have enough money!");
@@ -42,7 +42,6 @@ function slotMachines() {
         }
 
         updateDisplay();
-        playAgain = confirm("Play again?");
-    }
+        check();      
 }
 document.getElementById("slot").addEventListener("click", slotMachines);

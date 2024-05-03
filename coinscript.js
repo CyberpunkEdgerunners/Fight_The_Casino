@@ -1,32 +1,55 @@
-// Function to play the coin toss game
 function playCoinToss() {
-    // Deduct $10 from the user's money
-    let moneyElement = document.getElementById("money");
-    let currentMoney = parseInt(moneyElement.innerText.slice(1));
-    if (currentMoney < 10) {
-        alert("You don't have enough money to play!");
+    let ans;
+    const min = 10;
+    
+    // Check if user has enough money to play
+    if (money.getBalance() < min) {
+        alert("Sorry! You do not have enough money!");
         return;
     }
-    currentMoney -= 10;
-    moneyElement.innerText = "$" + currentMoney;
 
-    // Perform the coin toss
-    let result = Math.random() < 0.5 ? "Heads" : "Tails";
-
-    // Prompt the user with the result and ask if they want to play again or switch games
-    let playAgain = confirm("The result is: " + result + "\nDo you want to play again?");
-    if (playAgain) {
-        playCoinToss();
-    } else {
-        let switchGame = confirm("Do you want to switch to another game?");
-        if (switchGame) {
-            alert("Redirecting to another game...");
-        } else {
-            alert("Thank you for playing! Enjoy your day!");
+    // Prompt for bet amount
+    let bet = -1;
+    while (bet < 10 || bet > 100 || isNaN(bet)) {
+        bet = parseInt(prompt("Enter your bet amount ($10 to $100):"), 10);
+        if ((isNaN(bet) || bet < 10 || bet > 100) && bet !== 0) {
+            alert("Invalid bet amount. Please enter a value between $10 and $100.");
+        }
+        if (bet === 0) {
+            return;
         }
     }
+    
+    // Subtract bet amount from user's balance
+    money.subMoney(bet);
+    updateDisplay();
+
+    // Prompt the user to pick "heads" or "tails"
+    do
+    {
+        ans = prompt("Select 'heads' or 'tails'");
+        console.log();
+    }
+        while (ans !== "heads" && ans !== "tails" && ans !== null);
+     console.log();
+
+    // Generate the result of the coin toss
+    const result = Math.random() < 0.5 ? "heads" : "tails";
+     console.log();
+
+    // Compare the result with the user's choice and update balance
+    if (result === ans)
+    {
+         console.log();
+        money.addMoney(bet * 3);
+        alert("You won! The result is " + result + "! You doubled your bet!");
+    } 
+    else 
+    {
+        alert("You lost! The result is " + result + "! Better luck next time!");
+    }
+    updateDisplay();
 }
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
-
