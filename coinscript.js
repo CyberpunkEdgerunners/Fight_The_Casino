@@ -37,8 +37,8 @@ function playCoinToss() {
         "  _______\n" +
         " /          \\\n" +
         "/            \\\n" +
-        "|    " + result.toUpperCase() + "  |\n" +
-        "\\            /\n" +
+        "|" + result.toUpperCase() + "  |\n" +
+        "\\             /\n" +
         " \\_______/\n\n" +
         (result === ans ? "You won! The result is " + result + "! You doubled your bet!" : "You lost! The result is " + result + "! Better luck next time!")
     );
