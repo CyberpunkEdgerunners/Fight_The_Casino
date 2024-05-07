@@ -36,8 +36,8 @@ function playCoinToss() {
     alert(
         "  _______\n" +
         " /       \\\n" +
-        "/   " + result.toUpperCase() + "   \\\n" +
-        "|          |\n" +
+        "/         \\\n" +
+        "|    " + result.toUpperCase() + "    |\n" +
         "\\         /\n" +
         " \\_______/\n\n" +
         (result === ans ? "You won! The result is " + result + "! You doubled your bet!" : "You lost! The result is " + result + "! Better luck next time!")
@@ -49,4 +49,5 @@ function playCoinToss() {
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
+
 
