@@ -35,10 +35,10 @@ function playCoinToss() {
     // Display coin toss result with ASCII art
     alert(
         "  _______\n" +
-        " /         \\\n" +
-        "/           \\\n" +
-        "|    $      |\n" +
-        "\\           /\n" +
+        " /          \\\n" +
+        "/            \\\n" +
+        "|    $       |\n" +
+        "\\            /\n" +
         " \\_______/\n\n" +
         (result === ans ? "You won! The result is " + result + "! You doubled your bet!" : "You lost! The result is " + result + "! Better luck next time!")
     );
