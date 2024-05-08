@@ -25,32 +25,30 @@ function playCoinToss() {
     updateDisplay();
 
     // Prompt the user to pick "heads" or "tails"
-    do
-    {
+    do {
         ans = prompt("Select 'heads' or 'tails'");
-        console.log();
-    }
-        while (ans !== "heads" && ans !== "tails" && ans !== null);
-     console.log();
+    } while (ans !== "heads" && ans !== "tails" && ans !== null);
 
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
-     console.log();
 
-    // Compare the result with the user's choice and update balance
-    if (result === ans)
-    {
-         console.log();
-        money.addMoney(bet * 3);
-        alert("You won! The result is " + result + "! You doubled your bet!");
-    } 
-    else 
-    {
-        alert("You lost! The result is " + result + "! Better luck next time!");
-    }
+    // Display coin toss result with ASCII art
+    alert(
+        "  _______\n" +
+        " /          \\\n" +
+        "/            \\\n" +
+        "|     $      |\n" +
+        "\\            /\n" +
+        " \\_______/\n\n" +
+        (result === ans ? "You won! The result is " + result + "! You doubled your bet!" : "You lost! The result is " + result + "! Better luck next time!")
+    );
+
+    // Update balance display
     updateDisplay();
     check();
 }
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
+
+
