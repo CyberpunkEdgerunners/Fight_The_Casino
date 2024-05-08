@@ -38,15 +38,15 @@ function playCoinToss() {
     if (result === ans) {
         money.addMoney(bet * 3);
         alert(
-            "  _____" +
+            "   _____" +
             "\n" +
             " /       \\" +
             "\n" +
-            "|    $    |" +
+            "|    $     |" +
             "\n" +
             "\\         /" +
             "\n" + 
-            " \\_____/"+
+            " \ \_____/"+
             "\n" +
             "You won! The result is " + result + "! You doubled your bet!"
         );
