@@ -41,7 +41,13 @@ function playCoinToss() {
 
     // Compare the result with the user's choice and update balance
     if (result === ans) {
-        money.addMoney(bet * 3);
+        money.addMoney(bet * 3)
+        alert( ("  _______")
+               (" /       \\")
+               ("|    $    |")
+             ("\\       /")
+             (" \\_____/")
+              )
         alert("You won! The result is " + result + "! You doubled your bet!");
     } else {
         alert("You lost! The result is " + result + "! Better luck next time!");
