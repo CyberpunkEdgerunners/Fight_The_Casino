@@ -44,7 +44,7 @@ function playCoinToss() {
             "\n" +
             "|    $    |" +
             "\n" +
-            "\\       /" +
+            "\\         /" +
             "\n" + 
             " \\_____/"+
             "\n" +
@@ -52,7 +52,7 @@ function playCoinToss() {
         );
     } else {
         alert(
-            "  ______" +
+            "  _____" +
             "\n" +
             " /       \\" +
            "\n" +
