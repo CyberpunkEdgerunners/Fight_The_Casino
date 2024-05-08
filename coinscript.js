@@ -38,7 +38,7 @@ function playCoinToss() {
     if (result === ans) {
         money.addMoney(bet * 3);
         alert(
-            "  ______" +
+            "  _____" +
             "\n" +
             " /       \\" +
             "\n" +
