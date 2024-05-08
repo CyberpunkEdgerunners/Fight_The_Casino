@@ -42,6 +42,7 @@ function playCoinToss() {
         " \\_______/\n\n" +
         if (result === ans )
         {
+        money.addMoney(bet * 3);
         alert("You won! The result is " + result + "! You doubled your bet!");
     }
     else
