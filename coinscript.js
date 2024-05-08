@@ -36,7 +36,7 @@ function playCoinToss() {
     console.log("  _______");
     console.log(" /       \\");
     console.log("|    $    |");
-    console.log("\\       /");
+    console.log("\\          /");
     console.log(" \\_____/");
 
     // Compare the result with the user's choice and update balance
@@ -50,7 +50,7 @@ function playCoinToss() {
             "|    $    |" +
             "\n" +
             "\\       /" +
-            "\n" +
+            "\n" + 
             " \\_____/"+
             "\n" +
             "You won! The result is " + result + "! You doubled your bet!"
