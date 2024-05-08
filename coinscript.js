@@ -1,4 +1,3 @@
-User
 function playCoinToss() {
     let ans;
     const min = 10;
