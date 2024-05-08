@@ -32,12 +32,7 @@ function playCoinToss() {
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
 
-    // Display ASCII art of a coin toss
-    console.log("  _______");
-    console.log(" /       \\");
-    console.log("|    $    |");
-    console.log("\\          /");
-    console.log(" \\_____/");
+   
 
     // Compare the result with the user's choice and update balance
     if (result === ans) {
