@@ -42,7 +42,13 @@ function playCoinToss() {
     {
          console.log();
         money.addMoney(bet * 3);
-        alert("You won! The result is " + result + "! You doubled your bet!");
+        alert(
+            "  ________\n" +
+            "/          \\\n" +
+            "|     $     |\n" +
+            "\\         /\n" +
+            " \\_______/"
+            "You won! The result is " + result + "! You doubled your bet!");
     } 
     else 
     {
