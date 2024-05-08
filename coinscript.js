@@ -40,14 +40,6 @@ function playCoinToss() {
     // Compare the result with the user's choice and update balance
     if (result === ans)
     {
-         alert(
-        "  _______\n" +
-        " /          \\\n" +
-        "/            \\\n" +
-        "|     $      |\n" +
-        "\\            /\n" +
-        " \\_______/\n\n" +
-             )
          console.log();
         money.addMoney(bet * 3);
         alert("You won! The result is " + result + "! You doubled your bet!");
@@ -61,4 +53,3 @@ function playCoinToss() {
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
-
