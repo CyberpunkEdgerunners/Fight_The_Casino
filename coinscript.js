@@ -41,20 +41,37 @@ function playCoinToss() {
 
     // Compare the result with the user's choice and update balance
     if (result === ans) {
-        money.addMoney(bet * 3)
-        alert( ("  _______")
-               (" /       \\")
-               ("|    $    |")
-             ("\\       /")
-             (" \\_____/")
-              )
-        alert("You won! The result is " + result + "! You doubled your bet!");
+        money.addMoney(bet * 3);
+        alert(
+            "  _______" +
+            "\n" +
+            " /       \\" +
+            "\n" +
+            "|    $    |" +
+            "\n" +
+            "\\       /" +
+            "\n" +
+            " \\_____/"+
+            "\n" +
+            "You won! The result is " + result + "! You doubled your bet!"
+        );
     } else {
-        alert("You lost! The result is " + result + "! Better luck next time!");
+        alert(
+            "  _______" +
+            "\n" +
+            " /       \\" +
+            "\n" +
+            "|    $    |" +
+            "\n" +
+            "\\       /" +
+            "\n" +
+            " \\_____/"+
+            "\n" +
+            "You lost! The result is " + result + "! Better luck next time!"
+        );
     }
     updateDisplay();
 }
 
 // Add event listener to the coin option container
 document.getElementById("coin").addEventListener("click", playCoinToss);
-
