@@ -40,7 +40,14 @@ function playCoinToss() {
         "|     $      |\n" +
         "\\            /\n" +
         " \\_______/\n\n" +
-        (result === ans ? "You won! The result is " + result + "! You doubled your bet!" : "You lost! The result is " + result + "! Better luck next time!")
+        if (result === ans )
+        {
+        alert("You won! The result is " + result + "! You doubled your bet!");
+    }
+    else
+    {
+        alert( "You lost! The result is " + result + "! Better luck next time!");
+    }
     );
 
     // Update balance display
