@@ -32,25 +32,31 @@ function playCoinToss() {
     // Generate the result of the coin toss
     const result = Math.random() < 0.5 ? "heads" : "tails";
 
-    // Display coin toss result with ASCII art
-    alert(
+     if (result === ans)
+    {
+          alert(
         "  _______\n" +
         " /          \\\n" +
         "/            \\\n" +
         "|     $      |\n" +
         "\\            /\n" +
         " \\_______/\n\n" +
-        if (result === ans )
-        {
         money.addMoney(bet * 3);
         alert("You won! The result is " + result + "! You doubled your bet!");
-    }
-    else
+    } 
+    else 
     {
-        alert( "You lost! The result is " + result + "! Better luck next time!");
+          alert(
+        "  _______\n" +
+        " /          \\\n" +
+        "/            \\\n" +
+        "|     $      |\n" +
+        "\\            /\n" +
+        " \\_______/\n\n" +
+        alert("You lost! The result is " + result + "! Better luck next time!");
     }
-    );
-
+    updateDisplay();
+}
     // Update balance display
     updateDisplay();
     check();
