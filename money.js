@@ -26,7 +26,7 @@ class Money {
 
         this.balance -= x;
         updateDisplay();
-        check();
+        //check();
     }
 
     getBalance() { // Returns current balance
@@ -50,7 +50,7 @@ function updateDisplay() {
 }
 
 const money = new Money(); // Global bank object to influence
-let milestone = money.getBalance();
+let milestone = money.getBalance() - 100;
 
 // You can call functions to influence this money variable across all games, replacing value with an int
 // money.addMoney(value)

@@ -51,5 +51,7 @@ function slotMachines() {
     }
 
     updateDisplay();
+    //addded
+    check();
 }
 document.getElementById("slot").addEventListener("click", slotMachines);

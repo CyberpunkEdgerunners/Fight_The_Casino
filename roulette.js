@@ -247,5 +247,6 @@ function roulette() {
         alert("Sorry! You lost. The winning number was " + outcome);
     }
     updateDisplay();
+    check();
 }
 document.getElementById("russian").addEventListener("click", roulette);
