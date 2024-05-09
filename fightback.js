@@ -110,11 +110,24 @@ function roll() {
     player.health -= d2;
     //player lost {$damage} health
     //stats();
-    alert(`
-    Player lost ${d2} health        Enemy lost ${d1} health
+    const verbs = ["tickled", "nudged", "zapped", "bopped", "poked", "whacked", "stabbed", "squeezed", "blasted", "blugeoned", "slashed", "splashed", "smacked", "flicked", "kneed", "booted", "sniped", "splatted", "slapped", "grazed"];
+    let verbIndex1 = ladyluck(0, verbs.length - 1);
+    let verbIndex2 = ladyluck(0, verbs.length - 1);
+
+    const bodyParts = ["arm", "knee", "elbow", "foot", "mouth", "hand", "shin", "thigh", "ankle", "toe", "finger", "heel", "hip", "back", "neck", "forehead", "ear", "nose", "jaw", "cheek", "belly", "bottom lip", "top lip", "groin", "clavicle", "femur", "eyelash", "glutes", "chest"];
+    let bodyIndex1 = ladyluck(0, bodyParts.length - 1);
+    let bodyIndex2 = ladyluck(0, bodyParts.length - 1);
     
-    Player Health: ${player.health}             Enemy Health: ${enemy.health}
+    alert(`
+    Player was ${verbs[verbIndex1]} in the ${bodyParts[bodyIndex1]}!
+    Player lost ${d2} health
+
+    The enemy was ${verbs[verbIndex2]} in the ${bodyParts[bodyIndex2]}!
+    Enemy lost ${d1} health
+
+    Player Health: ${player.health}                  Enemy Health: ${enemy.health}
     `);
+
     if(player.health <= 0 && second == true) gameover();
     else if(player.health <= 0) {
         money.subMoney(100);
