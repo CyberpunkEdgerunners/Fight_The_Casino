@@ -69,31 +69,41 @@ kingTalkOne += ", I've heard great tales of your adventure but I don't think you
 const playerTalkOne = "I've spent decades honing my strength to one day take you down and rightfully take what's mine, brother";
 const kingTalkTwo = "If you can earn enough money from the casino then I'll enligthen you but currently I dont have time to spend on trash";
 const playerTalkTwo = "I'll destory everything here until its only just me and you";
-const kingTalkThree = "You fool, dont you know that the casino always wins";
+const kingTalkThree = "You fool, dont you know that the house always wins";
 
 
 function messages(lineCounter) {
-    if(lineCounter == 1) { 
-        storyPic.src = "https://i.imgur.com/hNCqe6H.png";
-        return settingMess;
-    }else if(lineCounter == 2) {
-        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
-        return kingTalkOne;
-    }else if(lineCounter == 3) {
-        storyPic.src = "https://i.imgur.com/npnRwbJ.png";
-        return playerTalkOne;
-    }else if(lineCounter == 4) {
-        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
-        return kingTalkTwo;
-    }else if(lineCounter == 5) {
-        storyPic.src = "https://i.imgur.com/npnRwbJ.png";
-        return playerTalkTwo;
-    }else if(lineCounter == 6) {
-        storyPic.src = "https://i.imgur.com/vLmXVUC.png";
-        return kingTalkThree;
-    }else 
-        return -1;
+
+    switch(lineCounter) {
+        case 1:    
+            storyPic.src = "https://i.imgur.com/hNCqe6H.png";
+            return settingMess;
+
+        case 2:
+            storyPic.src = "https://i.imgur.com/vLmXVUC.png";
+            return kingTalkOne;
+
+        case 3: 
+            storyPic.src = "https://i.imgur.com/npnRwbJ.png";
+            return playerTalkOne;
+
+        case 4:
+            storyPic.src = "https://i.imgur.com/vLmXVUC.png";
+            return kingTalkTwo;
+
+        case 5: 
+            storyPic.src = "https://i.imgur.com/npnRwbJ.png";
+            return playerTalkTwo;
+
+        case 6:
+            storyPic.src = "https://i.imgur.com/vLmXVUC.png";
+            return kingTalkThree;
+
+        default:
+            return -1;
+    }
 }
+
 
 window.addEventListener("load", function(){
 
@@ -107,7 +117,12 @@ window.addEventListener("load", function(){
         pee.innerHTML = ret;
     });
 
+    document.getElementById("mainImg").addEventListener("click", function() {
+        $('#dialog').dialog('close');
+    });
+
 });
+
 
 
 
