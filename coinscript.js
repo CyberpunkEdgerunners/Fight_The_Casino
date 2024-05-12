@@ -66,6 +66,7 @@ function playCoinToss() {
         );
     }
     updateDisplay();
+    check();
 }
 
 // Add event listener to the coin option container

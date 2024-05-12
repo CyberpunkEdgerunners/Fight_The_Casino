@@ -26,6 +26,8 @@ cash = money.getBalance();
 if(cash <= 0 && Xtralife == false) gameover();
 //lost all money, but still have Xtralife
 else if(cash <= 0 && Xtralife == true) secondchance();
+//earned enough and can pay off debt
+else if(cash >= 1000) payoff();
 //lost casino games
 else if(cash <= milestone) {
     milestone = cash - 100;
@@ -34,8 +36,6 @@ else if(cash <= milestone) {
 else if(cash >= milestone + 100) {
     milestone = cash - 100;   
 }
-//earned enough and can pay off debt
-else if(cash >= 1000) payoff();
 }
 
 
@@ -45,6 +45,7 @@ function fightback(choice) {
 //returning to casino to continue playing if possible
 alert("That casino worker just stole your hard-earned money! Are you gonna let them do that or are you going to fight back?");
 $(span1).html(`<button onclick="fight()">Fight Back!</button>`);
+$(span2).html(``);
 if(choice == true) {
     $(span3).html(`<button onclick="gameover()">Runaway!</button>`);
 }
@@ -55,6 +56,7 @@ function runaway() {
 //player ran away from the fightback fight
 //return to normal casino menu
 $(span1).html(`<button onclick="money.subMoney(100)">Lose $100</button>`);
+$(span2).html(`<button onclick="money.setBalance(1000)">Win Game</button>`);
 $(span3).html(`<button onclick="money.setBalance(0)">Lose Game</button>`);
 }
 
@@ -88,6 +90,13 @@ function payoff() {
 //text explaining user repaid their debt and never returned
 //to shady casino
 //only option is to restart or leave page
+$(slot).remove();
+$(coin).remove();
+$(russian).remove();
+$("h2").html("You've won, either refresh or leave!");
+$(span1).html(``);
+$(span2).html(``);
+$(span3).html(``);
 }
 
 function fight() {
@@ -133,7 +142,7 @@ function roll() {
         money.subMoney(100);
         //player lost $100 ... again
         $(span1).html(`<button onclick="money.subMoney(100)">Lose $100</button>`);
-        $(span2).html(``);
+        $(span2).html(`<button onclick="money.setBalance(1000)">Win Game</button>`);
         $(span3).html(`<button onclick="money.setBalance(0)">Lose Game</button>`);
     player.health = 100;
     enemy.health = 100;
@@ -143,7 +152,7 @@ function roll() {
         money.addMoney(100);
         //player won back $100
         $(span1).html(`<button onclick="money.subMoney(100)">Lose $100</button>`);
-        $(span2).html(``);
+        $(span2).html(`<button onclick="money.setBalance(1000)">Win Game</button>`);
         $(span3).html(`<button onclick="money.setBalance(0)">Lose Game</button>`);
     enemy.health = 100;
     player.health = 100;
