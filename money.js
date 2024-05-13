@@ -1,6 +1,6 @@
 class Money {
     constructor() {
-        this.balance = 500; // Constructor to set balance to $1000
+        this.balance = 500; // Constructor to set balance to $500
     }
 
     addMoney(x) {   // Adds x to total balance
