@@ -64,11 +64,11 @@ function getCookie(cname) {
 let lineCounter = 1;
 const settingMess = "King Nero was the richest and most powerful human to ever lay foot on planet earth, however one man stood in front of him ready to risk it all.";
 let   kingTalkOne = "Welcome ";
-kingTalkOne += name;
+kingTalkOne += nameFlag;
 kingTalkOne += ", I've heard great tales of your adventure but I don't think you're ready to Fight The Casino";
 const playerTalkOne = "I've spent decades honing my strength to one day take you down and rightfully take what's mine, brother";
 const kingTalkTwo = "If you can earn enough money from the casino then I'll enligthen you but currently I dont have time to spend on you lil bro";
-const playerTalkTwo = "I'll destory everything here until its only just me and you";
+const playerTalkTwo = "I'll play your dumb games but I'll destory everything here until its only just you and me";
 const kingTalkThree = "You fool, dont you know that the house always wins";
 
 
