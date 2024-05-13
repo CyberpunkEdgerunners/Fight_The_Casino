@@ -67,7 +67,7 @@ let   kingTalkOne = "Welcome ";
 kingTalkOne += name;
 kingTalkOne += ", I've heard great tales of your adventure but I don't think you're ready to Fight The Casino";
 const playerTalkOne = "I've spent decades honing my strength to one day take you down and rightfully take what's mine, brother";
-const kingTalkTwo = "If you can earn enough money from the casino then I'll enligthen you but currently I dont have time to spend on trash";
+const kingTalkTwo = "If you can earn enough money from the casino then I'll enligthen you but currently I dont have time to spend on you lil bro";
 const playerTalkTwo = "I'll destory everything here until its only just me and you";
 const kingTalkThree = "You fool, dont you know that the house always wins";
 

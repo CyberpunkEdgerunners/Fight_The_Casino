@@ -79,7 +79,25 @@ function gameover() {
 $(slot).remove();
 $(coin).remove();
 $(russian).remove();
-$("h2").html("You've lost, either refresh or leave!");
+$("h2").remove();
+$(".item").remove();
+//$("h2").html("You've lost, either refresh or leave!");
+    $( function() {
+      $( "#dialog2" ).dialog();
+  } );
+ 
+ 
+  // id = dialog makes the height and width of the pop up
+  $( "#dialog2" ).dialog({
+      width: 500,
+      height: 300,
+      position: { my: "center", at: "top" },
+  });
+
+$(pee2).html("You've Lost");
+document.getElementById("imgD2").classList.remove("hidden");
+
+
 $(span1).html(``);
 $(span2).html(``);
 $(span3).html(``);
@@ -93,7 +111,24 @@ function payoff() {
 $(slot).remove();
 $(coin).remove();
 $(russian).remove();
-$("h2").html("You've won, either refresh or leave!");
+$(".item").remove();
+    $( function() {
+      $( "#dialog2" ).dialog();
+  } );
+
+
+  // id = dialog makes the height and width of the pop up
+  $( "#dialog2" ).dialog({
+      width: 500,
+      height: 300,
+      position: { my: "center", at: "top" },
+  });
+
+$(pee2).html("You've Won");
+document.getElementById("imgD2").src = "https://i.imgur.com/P5nGYQI.jpeg";
+document.getElementById("imgD2").classList.remove("hidden");
+
+//$("h2").html("You've won, either refresh or leave!");
 $(span1).html(``);
 $(span2).html(``);
 $(span3).html(``);
@@ -104,6 +139,8 @@ function fight() {
     $(span2).html(`<button onclick="roll()">Fight!</button>`);
     $(span3).html(``);
 }
+
+
 
 function ladyluck(min, max) {
 //random number generator
@@ -126,7 +163,8 @@ function roll() {
     const bodyParts = ["arm", "knee", "elbow", "foot", "mouth", "hand", "shin", "thigh", "ankle", "toe", "finger", "heel", "hip", "back", "neck", "forehead", "ear", "nose", "jaw", "cheek", "belly", "bottom lip", "top lip", "groin", "clavicle", "femur", "eyelash", "glutes", "chest"];
     let bodyIndex1 = ladyluck(0, bodyParts.length - 1);
     let bodyIndex2 = ladyluck(0, bodyParts.length - 1);
-    
+
+
     alert(`
     Player was ${verbs[verbIndex1]} in the ${bodyParts[bodyIndex1]}!
     Player lost ${d2} health

@@ -133,9 +133,16 @@ h2 {
 
 }
 
-#dialog {
+#dialog, #dialog2 {
     color: black;
     background-color: red;
+}
+
+#pee2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    font-size: 40pt;
 }
 
 #pee {
@@ -174,7 +181,9 @@ img {
     align-items: center;
 }
 
-
+.hidden {
+    display: none;
+}
 
 
 
