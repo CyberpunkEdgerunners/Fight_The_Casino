@@ -200,7 +200,7 @@ function roulette() {
       Enter second number (must be touching ${num1} on the board):
 
                             `));
-                        } while(isNaN(num2) || (num2 < 0 || num2 > 36)); // Checks if input is either not a number or is out of range of valid roulette numbers
+                        } while(isNaN(num2) || (num2 < 0 || num2 > 36) || num1 === num2); // Checks if input is either not a number or is out of range of valid roulette numbers
 
                         let max = Math.max(num1, num2);
                         let min = Math.min(num1, num2);
