@@ -29,56 +29,74 @@ function calcBet(type, bet, choice) {
 }
 
 function roulette() {
-    let betType, betAmount, betChoice, win = false, valid = false, outcome, userGuess, color = "black"; // color
+    let betType, betAmount, betChoice, win = false, valid = false, outcome, userGuess, color = "Black"; 
     let num1, num2, num3;
+    const MIN = 5;
+
+    betType = prompt("Choose a safer Outside Bet (o) or a risky Inside Bet (i)").toLowerCase();
+    if (betType !== "o" && betType !== "i"){
+        alert("Come back when you learn to read.");
+        return;
+    }
 
     do {
-        betType = prompt("Place your bets! Choose (o) Outside Bet or (i) Inside Bet").toLowerCase();
-    } while(betType !== "o" && betType !== "i") 
+        betAmount = prompt("Place your bets! \n\nLeave blank -> Auto Bet $50 \n\nCurrent balance: $" + money.getBalance());
+        if (betAmount === "") {           // Autobet is at $50 if user presses enter without typing a value
+            betAmount = 50; 
+
+        } else {
+            betAmount = parseInt(betAmount, 10);
+            
+            if (betAmount === 0 || isNaN(betAmount)) {
+                return;
+            }
+
+            if (isNaN(betAmount) || betAmount < MIN) {
+                alert("Invalid bet amount. Please bet at least $" + MIN + ".");
+
+            } else if (money.getBalance() < betAmount) {
+                alert("Sorry, you are too broke! Place a bet between $" + MIN + " and $" + money.getBalance());
+            }
+        }
+    } while ((betAmount < MIN || betAmount > money.getBalance())); // Ensures user enters correct bet amount
 
     do { // Asks user to chose a bet depending on if they chose to use outside bets or inside bets
         betChoice = prompt("Choose a bet type:\n" + (betType === "o" ? "a) Red/Black b) Odd/Even c) High/Low d) Dozens e) Columns" : "a) Straight b) Split c) Street d) Six Line")).toLowerCase();
     } while (betChoice !== "a" && betChoice !== "b" && betChoice !== "c" && betChoice !== "d" && betChoice !== "e" && (betType === "i" && betChoice === "e"));
-        do {
-            betAmount = parseFloat(prompt("Enter your bet amount. Current balance: $" + money.getBalance()));
 
-            if (isNaN(betAmount) || betAmount < 10) {
-                alert("Invalid bet amount. Please bet at least $10.");
-
-            } else if (money.getBalance() < betAmount) {
-                alert("Sorry, you are too broke! Place a bet between $10 and $" + money.getBalance());
-            }
-
-        } while ((isNaN(betAmount) || betAmount < 10 || betAmount > money.getBalance())); // Ensures user enters correct bet amount
-
-    money.subMoney(betAmount);  // Subtract bet amount from balance
-    let pot = calcBet(betType, betAmount, betChoice);
+    money.subMoney(betAmount);                          // Subtract bet amount from balance
+    let pot = calcBet(betType, betAmount, betChoice);   // Calculates potential winnings
     updateDisplay();
 
-    // Simulate outcome 
-    outcome = Math.floor(Math.random() * 37); 
+    outcome = Math.floor(Math.random() * 37);           // Simulate outcome 
+
+    if (outcome === 0) {
+        color = "Green";
+    }
+
     win = false;
     valid = false;
     switch (betType) {
         case "o":
             switch (betChoice) {
-                case "a": 
-                    const redNumbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+
+                case "a":
+                    const redNumbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]; // Array to represent all red numbers
                     do {
                         userGuess = prompt("Choose Red (r) or Black (b):").toLowerCase();
                     } while (userGuess !== "r" && userGuess !== "b");
 
-                    if ((userGuess === "r" && redNumbers.includes(outcome)) || userGuess === "b" && !(redNumbers.includes(outcome))) {  
+                    if ((userGuess === "r" && redNumbers.includes(outcome)) || userGuess === "b" && !(redNumbers.includes(outcome))) {
                         if (outcome !== 0) {
                             win = true;
-                        } 
+                        }
                     }
                     if (redNumbers.includes(outcome)) {
-                        color = "red";
+                        color = "Red";
                     }
                     break;
 
-                case "b": 
+                case "b":   // Even/Odd
                     do {
                         userGuess = prompt("Choose Even (e) or Odd (o):").toLowerCase();
                     } while (userGuess !== "e" && userGuess !== "o");
@@ -87,7 +105,7 @@ function roulette() {
                     }
                     break;
 
-                case "c":
+                case "c":   // High/Low
                     do{
                         userGuess = prompt("Choose High(h) or Low (l)\nLow is numbers 1 - 18, High is 19 - 36").toLowerCase();
                     } while (userGuess !== "h" && userGuess !== "l");
@@ -96,23 +114,23 @@ function roulette() {
                         win = true;
                     }
                     break;
-                
-                case "d":
+
+                case "d":   // Dozens
                     do {
-                        userGuess = prompt("Choose a set of the three dozens.\n(a) 1 - 12 \n(b) 13 - 24 \n (c) 25 - 36").toLowerCase()
+                        userGuess = prompt("Choose a set of the three dozens.\n(a) 1 - 12 \n(b) 13 - 24 \n (c) 25 - 36").toLowerCase();
                     } while (userGuess !== "a" && userGuess !== "b" && userGuess !== "c");
 
                     if (outcome === 0) {
                         break;
                     }
-                    if ((userGuess === "a" && outcome < 13) || (userGuess === "b" && outcome > 13 && outcome < 25) || (userGuess === "c" && outcome > 24)) {
+                    if ((userGuess === "a" && outcome < 13) || (userGuess === "b" && outcome >= 13 && outcome < 25) || (userGuess === "c" && outcome >= 25)) {
                         win = true;
                     }
                     break;
-
-                case "e":
+                    
+                    case "e":       // Columns
                     do {
-                        userGuess = prompt("Choose a column\n (a) 1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34 \n(b) 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35 \n(c) 3, 6, 9, 12, 15, 18, 31, 24, 27, 30, 33, 36").toLowerCase();
+                        userGuess = prompt("Choose a column\n (a) 1, 4, 7, 10, 13, 16, 19, 22, 25, 28, 31, 34 \n(b) 2, 5, 8, 11, 14, 17, 20, 23, 26, 29, 32, 35 \n(c) 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36").toLowerCase();
                     } while (userGuess !== "a" && userGuess !== "b" && userGuess !== "c");
 
                     if (outcome === 0) {
@@ -123,27 +141,30 @@ function roulette() {
                             for (let i = 1; i <= 34; i += 3) {
                                 if (outcome === i) {
                                     win = true;
-                                    break;
                                 }
                             }
-                        
+                            break;
+
                         case "b":
-                            for (let i = 2; i <= 35; i + 3) {
+                            for (let i = 2; i <= 35; i += 3) {
                                 if (outcome === i) {
                                     win = true;
-                                    break;
+
                                 }
                             }
+                            break;
 
                         case "c":
-                            for (let i = 3; i <= 36; i + 3) {
+                            for (let i = 4; i <= 36; i += 3) {
                                 if (outcome === i) {
                                     win = true;
-                                    break;
+
                                 }
                             }
+                            break;
                     }
-                    break;              
+                    break;
+           
             }
             break;
         case "i":
@@ -158,13 +179,28 @@ function roulette() {
                     }
                     break;
 
-                case "b": // Split bets, user can enter two numbers that are touching on the board
-                    let num1, num2;    
-                do { // First checks if numbers entered are valid 
+
+                    case "b": // Split bets, user can enter two numbers that are touching on the board
+                    let num1, num2;
+
+                    do { // First checks if numbers entered are valid
                         do{
-                            num1 = parsInt(prompt("Enter the first number: "));
-                            num2 = parseInt(prompt("Enter second number (must be touching the first number on the board): "));
-                        } while(isNaN(num1) || isNaN(num2) || (num1 < 0 || num1 > 36) || (num2 < 0 || num2 > 36)); // Checks if input is either not a number or is out of range of valid roulette numbers
+                            do {
+                            num1 = parseInt(prompt("Enter the first number: "));
+                            } while(isNaN(num1) || num1 < 0 || num1 > 36);
+
+                            num2 = parseInt(prompt(`
+      -----------------------------------------------------------
+      | 0  |  3 |  6 |  9 | 12 | 15 | 18 | 21 | 24 | 27 | 30 | 33 | 36 |
+      -----------------------------------------------------------
+      | 0  |  2 |  5 |  8 | 11 | 14 | 17 | 20 | 23 | 26 | 29 | 32 | 35 |
+      -----------------------------------------------------------
+      | 0  |  1 |  4 |  7 | 10 | 13 | 16 | 19 | 22 | 25 | 28 | 31 | 34 |
+      -----------------------------------------------------------
+      Enter second number (must be touching ${num1} on the board):
+
+                            `));
+                        } while(isNaN(num2) || (num2 < 0 || num2 > 36)); // Checks if input is either not a number or is out of range of valid roulette numbers
 
                         let max = Math.max(num1, num2);
                         let min = Math.min(num1, num2);
@@ -178,7 +214,7 @@ function roulette() {
                         } else if((min === 0 && max === 1) || (min === 0 && max === 2)) { // Special case where split bet involves 0
                             valid = true;
                         }
-                        
+
                         if (!valid) {
                             alert("Invalid choices. Numbers must be touching eachother on the board.");
                         }
@@ -191,52 +227,64 @@ function roulette() {
                     break;
 
                 case "c": // Street, 3 numbers in a row (1, 2, 3 for ex)
+                    let x,y,z; // stores user guesses
                     do {
-                        num1 = parseInt(prompt("Enter the first number in a row"));
-                        num2 = parseInt(prompt("Enter the second number in a row"));
-                        num3 = parseInt(prompt("Enter the third number in the row"));
-                        if (isNaN(num1) || isNaN(num2)|| isNaN(num3)) {
-                            alert("Invalid")
-                            valid = false;
+                        valid = false;
+                        x = parseInt(prompt(`
+      -----------------------------------------------------------
+      | 0  |  3 |  6 |  9 | 12 | 15 | 18 | 21 | 24 | 27 | 30 | 33 | 36 |
+      -----------------------------------------------------------
+      |    |  2 |  5 |  8 | 11 | 14 | 17 | 20 | 23 | 26 | 29 | 32 | 35 |
+      -----------------------------------------------------------
+      |    |  1 |  4 |  7 | 10 | 13 | 16 | 19 | 22 | 25 | 28 | 31 | 34 |
+      -----------------------------------------------------------
+      Enter the first number at the top of the row (vertical)
 
-                        } else if (Math.ceil(num1 / 3) !== Math.ceil(num2 / 3) && Math.ceil(num2 / 3) !== Math.ceil(num3 / 3)) {
-                            alert("Invalid. The numbers must be in the same row (1, 2, 3 for example")
-                            valid = false;
+                            `));
+                        if (!isNaN(x)) {
 
-                        } else {
-                            valid = true;
+                            y = x - 1; // if user chose 6 for x then y = 5, z = 4
+                            z = x - 2;
+                        }
+
+
+                        for (let i = 3; i <= 36; i += 3) { // Ensures user chose a number from the top
+                            if (x === i) {
+                                valid = true;
+                            }
+                        }
+                        if (!valid) {
+                            alert("Invalid. The numbers must be in the same row (1, 2, 3 for example)");
                         }
                     
                     } while(!valid);
-                    if (num1 === outcome || num2 === outcome || num3 === outcome) {
+                    if (x === outcome || y === outcome || z === outcome) {
                         win = true;
                     }
                     break;
-
+                
                 case "d": // Six line, six consecutive numbers (1 - 6 for ex)
-                do {
-                    num1 = parseInt(prompt("Enter the first number of the six line (If you chose 1 to 6, you would enter 1)"));
-                    num2 = parseInt(prompt("Enter last number of the six line"));
-                    let maxx = Math.max(num1, num2);
-                    let minn = Math.min(num1, num2);
+                    let ans;
+                    do {
+                        valid = false;
+                        ans = parseInt(prompt("Enter the first number of the six line (If you chose 1 to 6, you would enter 1)\n\n 7 through 12\n 13 through 18\n 19 through 24\n 25 through 30\n 31 through 36"));
 
-
-                    if (Math.ceil(num1 / 6) === Math.ceil(num2 / 6)) {
-                        if (maxx - minn === 5) { 
-                            valid = true;
+                        for (let i = 1; i <= 31; i += 6) { // Checks to see if number is at the beginning of six line
+                            if (ans === i) {
+                                valid = true;
+                            }
                         }
-                    }
-                } while(!valid || isNaN(num1) || isNaN(num2));
+                    } while(!valid);
 
-
-                for (let j = minn; j <= maxx; j++) {
-                    if (j === outcome) {
-                        win = true;
+                    for (let j = 0; j < 5; j++) {
+                        if (ans === outcome) {
+                            win = true;
+                        }
+                        ans++;
                     }
-                }
-                break;
-            }
-            break;
+                    break;
+              }
+              break;
     }
     if (win) {
         alert ("Congratulations! You won $" + pot + "! The winning number was " + outcome + " " + color);
@@ -244,7 +292,7 @@ function roulette() {
     }
 
     else {
-        alert("Sorry! You lost. The winning number was " + outcome);
+        alert("Too bad! You lost. The winning number was " + outcome + " " + color);
     }
     updateDisplay();
     check();
